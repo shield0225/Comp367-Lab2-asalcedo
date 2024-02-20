@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    def mvnHome = tool 'M3' // Assuming 'M3' is the ID of your Maven installation in Jenkins configuration
+                    sh "${mvnHome}/bin/mvn clean package"
+                }
+            }
+        }
+    }
+}

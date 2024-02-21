@@ -23,7 +23,7 @@ public class Comp367WelcomeWebAppApplication {
         	LocalTime now = LocalTime.now();
         	// checks time
             int hour = now.getHour();
-            // adds name to the greeting
+            // adds name to the greetings
             String name = "Aileen"; 
             if (hour < 12) {
                 return "Good morning, " + name + ", Welcome to COMP367";

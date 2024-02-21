@@ -20,8 +20,16 @@ public class Comp367WelcomeWebAppApplication {
 
         @GetMapping("/")
         public String welcome() {
-                return "Welcome to COMP367";
+        	LocalTime now = LocalTime.now();
+        	// checks time
+            int hour = now.getHour();
+            // adds name to the greetings
+            String name = "Aileen"; 
+            if (hour < 12) {
+                return "Good morning, " + name + ", Welcome to COMP367";
+            } else {
+                return "Good afternoon, " + name + ", Welcome to COMP367";
             }
         }
     }
-
+}

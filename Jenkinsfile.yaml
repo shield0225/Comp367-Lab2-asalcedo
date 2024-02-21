@@ -1,0 +1,11 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                // Runs the Maven build command. Adjust if you have a different goal.
+                sh 'mvn clean package'
+            }
+        }
+    }
+}

@@ -6,6 +6,7 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
+        }
         post {
             success {
                 echo 'Build was successful.'
@@ -13,6 +14,5 @@ pipeline {
             failure {
                 echo 'Build failed.'
             }
-        }
     }
 }

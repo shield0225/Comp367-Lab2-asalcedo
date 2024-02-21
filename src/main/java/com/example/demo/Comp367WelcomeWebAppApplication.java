@@ -21,7 +21,9 @@ public class Comp367WelcomeWebAppApplication {
         @GetMapping("/")
         public String welcome() {
         	LocalTime now = LocalTime.now();
+        	// checks time
             int hour = now.getHour();
+            // adds name to the greeting
             String name = "Aileen"; 
             if (hour < 12) {
                 return "Good morning, " + name + ", Welcome to COMP367";

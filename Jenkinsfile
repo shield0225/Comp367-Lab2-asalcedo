@@ -17,6 +17,8 @@ pipeline {
 	stage('Test') {
 	    steps {
 		sh 'mvn test'
+	    }
+	}
 
         stage('Code Coverage') {
             steps {

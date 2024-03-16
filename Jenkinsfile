@@ -35,7 +35,7 @@ pipeline {
 	stage('Docker Build') {
 	    steps {
 		script {
-		    docker.build(docker.build('shieldsalcedo/maven-app-auto:latest'))
+		    docker.withRegistry(docker.build('shieldsalcedo/maven-app-auto:latest'))
 		}
 	    }
 	}

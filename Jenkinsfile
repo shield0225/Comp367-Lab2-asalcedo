@@ -3,7 +3,7 @@ pipeline {
 
     stages {
 	stage('Checkout') {
-	    stage {
+	    steps {
 		git branch: 'main', url: 'https://github.com/shield0225/Comp367-Lab2-salcedo.git'
 	    }
 	}	

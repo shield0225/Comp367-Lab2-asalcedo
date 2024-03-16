@@ -49,7 +49,7 @@ pipeline {
 	stage('Docker Login') {
 	    steps {
 		script {
-		    bat docker login -u ${docker-login} -p ${docker-login}
+		    bat docker login -u ${docker-login}
 		}
 	    }
 	}

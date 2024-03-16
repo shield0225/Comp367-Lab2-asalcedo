@@ -49,7 +49,7 @@ pipeline {
 	stage('Docker Login') {
 	    steps {
 		script {
-		    echo ${docker-login} | docker login -u shieldsalcedo --password-stdin
+		    echo 'docker-login' | docker login -u shieldsalcedo --password-stdin
 		}
 	    }
 	}

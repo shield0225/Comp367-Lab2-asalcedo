@@ -4,25 +4,25 @@ pipeline {
     stages {
 	stage('Checkout') {
 	    steps {
-		git credentialsId: 'github-PAT', branch: 'main', url: 'https://github.com/shield0225/Comp367-Lab2-salcedo.git'
+		git branch: 'main', url: 'https://github.com/shield0225/Comp367-Lab2-salcedo.git'
 	    }
 	}	
 
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                bat 'mvn clean package'
             }
         }
 
 	stage('Test') {
 	    steps {
-		sh 'mvn test'
+		bat 'mvn test'
 	    }
 	}
 
         stage('Code Coverage') {
             steps {
-                sh 'mvn jacoco:prepare-agent test jacoco:report'
+                bat 'mvn jacoco:prepare-agent test jacoco:report'
             }
         }
 

@@ -48,12 +48,12 @@ pipeline {
 
 	stage('Docker Login') {
 	    steps {
-		script {
-			// bat 'docker login -u shieldsalcedo -p ${DOCKERHUB_PWD}'
-		    docker.withRegistry('', 'docker-login') {
-    			docker.login(username: 'shieldsalcedo', password: 'docker-login')
-			}
-		}
+	        script {
+	            withCredentials([string(credentialsId: 'docker-login', variable: 'DOCKERHUB_PWD')]) {
+                	bat "docker login -u shieldsalcedo -p %DOCKERHUB_PWD%"
+            		}
+	            }
+	        }
 	    }
 	}
 

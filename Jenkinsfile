@@ -55,7 +55,7 @@ pipeline {
 	            }
 	        }
 	    }
-	}
+	
 
 	stage('Docker Push') {
 	    steps {
@@ -66,7 +66,7 @@ pipeline {
 		}
 	    }
 	}
-    
+    }
     post {
         success {
             echo 'Build and run were successful.'

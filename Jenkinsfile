@@ -3,9 +3,6 @@ pipeline {
     tools {
 	maven "MAVEN3"
     }
-    environment {
-	DOCKERHUB_PWD=credentials('docker-login')
-    }
 
     stages {
 	stage('Checkout') {
@@ -60,9 +57,7 @@ pipeline {
 	stage('Docker Push') {
 	    steps {
 		script {
-		    docker.withRegistry('', 'docker-login') {
-			docker.image('shieldsalcedo/maven-app-auto:latest').push()
-		    }
+		    docker.image('shieldsalcedo/maven-app-auto:latest').push()
 		}
 	    }
 	}

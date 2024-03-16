@@ -49,7 +49,7 @@ pipeline {
 	stage('Docker Login') {
 	    steps {
 		script {
-		    docker.withRegistry('https://registry-1.docker.io', 'docker-login') {
+		    docker.withRegistry('', 'docker-login') {
     			docker.login(username: 'shieldsalcedo', password: docker-login)
 			}
 		}

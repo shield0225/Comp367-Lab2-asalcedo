@@ -32,6 +32,14 @@ pipeline {
 	    }
 	}
 
+	stage('Docker Login') {
+	    steps {
+		script {
+		    docker.build(docker.build('shieldsalcedo/maven-app-auto:latest')
+		}
+	    }
+	}
+
 	stage('Docker Push') {
 	    steps {
 		script {

@@ -1,5 +1,11 @@
 pipeline {
     agent any
+    tools {
+	maven "MAVEN3"
+    }
+    environment {
+	DOCKERHUB_PWD=credentials('docker-login')
+    }
 
     stages {
 	stage('Checkout') {
@@ -43,7 +49,7 @@ pipeline {
 	stage('Docker Login') {
 	    steps {
 		script {
-		    docker.withRegistry('', 'docker-login')
+		    bat docker login -u ${docker-login} -p ${docker-login}
 		}
 	    }
 	}

@@ -20,9 +20,15 @@ pipeline {
 	    }
 	}
 
-        stage('Code Coverage') {
+        stage('Generate Code Coverage') {
             steps {
                 bat 'mvn jacoco:prepare-agent test jacoco:report'
+            }
+
+            post {
+                always {
+                    jacoco execPattern: '**/target/jacoco.exec', classPattern: '**/classes', sourcePattern: '**/src/main/java'
+                }
             }
         }
 

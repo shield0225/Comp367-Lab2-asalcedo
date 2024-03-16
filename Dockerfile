@@ -1,15 +1,13 @@
-FROM openjdk:17-jdk-slim AS build
+FROM maven:3.8.4-openjdk-17-slim AS build
 
 WORKDIR /app
 
 COPY pom.xml .
 COPY src src
 
-RUN apt-get update && \
-    apt-get install -y maven && \
-    mvn clean package
+RUN mvn clean package
 
-FROM openjdk:17-jdk-slim
+FROM maven:3.8.4-openjdk-17-slim
 
 WORKDIR /app
 

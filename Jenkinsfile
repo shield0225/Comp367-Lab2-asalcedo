@@ -2,16 +2,45 @@ pipeline {
     agent any
 
     stages {
+	stage('Checkout') {
+	    stage {
+		git branch: 'main', url: 'https://github.com/shield0225/Comp367-Lab2-salcedo.git'
+	    {
+	}	
+
         stage('Build') {
             steps {
                 sh 'mvn clean package'
             }
         }
-        stage('Run') {
+
+	stage('Test') {
+	    steps {
+		sh 'mvn test'
+
+        stage('Code Coverage') {
             steps {
-                sh 'nohup java -jar target/comp367_welcome_web_app-0.0.1-SNAPSHOT.jar --server.port=9091 &'
+                sh 'mvn jacoco:prepare-agent test jacoco:report'
             }
         }
+
+	stage('Docker Build') {
+	    steps {
+		script {
+		    docker.build(docker.build('shieldsalcedo/maven-app-auto:latest')
+		}
+	    }
+	}
+
+	stage('Docker Push') {
+	    steps {
+		script {
+		    docker.withRegistry('', 'github_credentials') {
+			docker.image('shieldsalcedo/maven-app-auto:latest').push()
+		    }
+		}
+	    }
+	}
     }
     post {
         success {
